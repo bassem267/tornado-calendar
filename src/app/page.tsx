@@ -4,16 +4,32 @@ export default function Home() {
   return (
     <>
       <HomePage
-        image1Src="/images/image1.jpg"
-        image2Src="/images/image2.jpg"
-        title1="Welcome to my website"
-        title2="Explore my new content"
-        description1="This is a simple Next.js template with Tailwind CSS and TypeScript."
-        description2="The images and text dynamically change with a smooth swipe effect."
-        buttonText="Explore"
-        buttonBackgroundColor="bg-white"
-        backgroundImage1="/images/background1.jpg"
-        backgroundImage2="/images/background2.jpg"
+        slides={[
+          {
+            imageSrc: "/images/image1.jpg",
+            title: "Title 1",
+            description: "Description for image 1",
+            backgroundImage: "/images/background1.jpg",
+            buttonText: "Next",
+            buttonBackgroundColor: "bg-blue-500",
+          },
+          {
+            imageSrc: "/images/image2.jpg",
+            title: "Title 2",
+            description: "Description for image 2",
+            backgroundImage: "/images/background2.jpg",
+            buttonText: "Next",
+            buttonBackgroundColor: "bg-green-500",
+          },
+          {
+            imageSrc: "/images/image3.jpg",
+            title: "Title 3",
+            description: "Description for image 3",
+            backgroundImage: "/images/background3.jpg",
+            buttonText: "Next",
+            buttonBackgroundColor: "bg-red-500",
+          },
+        ]}
       />
     </>
   );
