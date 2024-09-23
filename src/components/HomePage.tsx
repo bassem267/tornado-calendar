@@ -11,6 +11,8 @@ interface Props {
   description2: string;
   buttonText: string;
   buttonBackgroundColor: string;
+  backgroundImage1: string; // New prop for background image
+  backgroundImage2: string; // New prop for background image
 }
 
 const HomePage: React.FC<Props> = ({
@@ -22,20 +24,34 @@ const HomePage: React.FC<Props> = ({
   description2,
   buttonText,
   buttonBackgroundColor,
+  backgroundImage1,
+  backgroundImage2,
 }) => {
   const [isSwapped, setIsSwapped] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState(backgroundImage1);
+  const [opacity, setOpacity] = useState(1);
 
   const handleImageClick = () => {
-    setIsSwapped(!isSwapped);
+    setOpacity(0); // Fade out
+    setTimeout(() => {
+      setIsSwapped((prev) => !prev);
+      setBackgroundImage((prev) =>
+        prev === backgroundImage1 ? backgroundImage2 : backgroundImage1
+      );
+      setOpacity(1); // Fade in
+    }, 300); // Match this timeout with your CSS transition duration
   };
 
   return (
     <>
       <div className="relative h-screen bg-gray-800">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 z-0 transition-opacity duration-300"
+          style={{ opacity }}
+        >
           <Image
-            src="/images/wallpaper.jpg"
+            src={backgroundImage}
             alt="Background image"
             layout="fill"
             objectFit="cover"
